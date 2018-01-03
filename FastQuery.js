@@ -12,15 +12,8 @@ function FastQuery(options){
     }
 }
 
-FastQuery.prototype.select = function(name, html_element){
-    var _char = name.charAt(0);
-    if(_char == '#'){
-        return this.selectId(name.substr(1, name.length), html_element);
-    } else if (_char == '.') {
-        return this.selectClass(name.substr(1, name.length), html_element);
-    } else {
-        return this.selectTag(name, html_element);
-    }
+FastQuery.prototype.select = function(selector, element){
+    return (element || document).querySelector(selector);
 };
 
 FastQuery.prototype.selectId = function(id, html_element)
